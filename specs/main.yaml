@@ -1,0 +1,23 @@
+openapi: "3.0.0"
+info:
+  title: API Title
+  version: "1.0.0"
+servers: []
+
+paths:
+
+  /test/{testId}:
+    get:
+      operationId: GetTest
+      parameters:
+        - $ref: "common.yaml#/components/parameters/query"
+      responses:
+        200:
+          description: Test
+          content:
+            application/json:
+              schema:
+                $ref:  "common.yaml#/components/schemas/dtoTest"
+        403:
+          $ref: "common.yaml#/components/responses/403"
+

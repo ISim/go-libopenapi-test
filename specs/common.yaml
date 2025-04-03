@@ -1,0 +1,44 @@
+openapi: "3.0.0"
+info:
+  title: Common schemas
+  version: "1.0.0"
+servers: []
+paths: []
+
+components:
+
+  schemas:
+    dtoTest:
+      description: Test schema
+      type: object
+      required:
+        - id
+      properties:
+        id:
+          type: string
+        paging:
+          $ref: "paging.yaml#/components/schemas/paging"
+
+  responses:
+    403:
+      description: Forbidden response
+      content:
+        application/json:
+          schema:
+            $ref: "error.yaml#/components/schemas/dtoError"
+          examples:
+            "example1":
+              value:
+                errorCode: ErrOperationForbidden
+                requestId: "x837ant-000007"
+                message: Forbidden
+
+  parameters:
+    query:
+      description: Query param
+      name: query
+      in: query
+      required: false
+      schema:
+        type: string
+

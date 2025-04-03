@@ -1,0 +1,31 @@
+openapi: "3.0.0"
+info:
+  title: Test - error schema
+  version: "1.0.0"
+servers: []
+paths: []
+
+components:
+
+  schemas:
+    errorCode:
+      description: ErrCode enumeration
+      type: string
+      enum:
+        - ErrUnknownError
+        - ErrEntityNotFound
+
+    dtoError:
+      description: General error structure
+      type: object
+      required:
+        - errorCode
+        - requestId
+      properties:
+        errorCode:
+          $ref: "#/components/schemas/errorCode"
+        requestId:
+          type: string
+        message:
+          type: string
+

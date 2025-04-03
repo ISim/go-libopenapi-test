@@ -1,0 +1,42 @@
+openapi: "3.0.0"
+info:
+    title: API Title
+    version: "1.0.0"
+paths:
+    /test/{testId}:
+        get:
+            operationId: GetTest
+            parameters:
+                - description: Query param
+                  name: query
+                  in: query
+                  required: false
+                  schema:
+                    type: string
+            responses:
+                "200":
+                    description: Test
+                    content:
+                        application/json:
+                            schema:
+                                description: Test schema
+                                type: object
+                                required:
+                                    - id
+                                properties:
+                                    id:
+                                        type: string
+                                    paging:
+                                        $ref: "paging.yaml#/components/schemas/paging"
+                "403":
+                    description: Forbidden response
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "error.yaml#/components/schemas/dtoError"
+                            examples:
+                                "example1":
+                                    value:
+                                        errorCode: ErrOperationForbidden
+                                        requestId: "x837ant-000007"
+                                        message: Forbidden

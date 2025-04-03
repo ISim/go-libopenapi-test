@@ -1,0 +1,18 @@
+openapi: "3.0.0"
+info:
+  title: Test - paging schema
+  version: "1.0.0"
+servers: []
+paths: []
+
+components:
+
+  schemas:
+    paging:
+      description: Paging section
+      type: object
+      properties:
+        total:
+          description: Total count
+          type: integer
+          example: 439
