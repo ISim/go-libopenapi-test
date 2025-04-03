@@ -21,3 +21,14 @@ paths:
         403:
           $ref: "common.yaml#/components/responses/403"
 
+  /test2:
+    get:
+      operationId: GetTest2
+      responses:
+        200:
+          description: Test
+          content:
+            application/json:
+              schema:
+                $ref:  "paging.yaml#/components/schemas/paging"
+

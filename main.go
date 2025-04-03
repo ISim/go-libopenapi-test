@@ -20,9 +20,6 @@ func main() {
 	spec, _ := filepath.Abs(filepath.Join("specs", "main.yaml"))
 	specBytes, _ := os.ReadFile(spec)
 
-	realFSdoc := merged(specBytes, "specs", nil)
-	save("merged-real-fs.yaml", realFSdoc)
-
 	lfs, err := index.NewLocalFSWithConfig(&index.LocalFSConfig{
 		BaseDirectory: "/",
 		DirFS:         apiYamls,
@@ -32,6 +29,9 @@ func main() {
 	}
 	embedFSdoc := merged(specBytes, "/specs", lfs)
 	save("merged-embed-fs.yaml", embedFSdoc)
+
+	realFSdoc := merged(specBytes, "specs", nil)
+	save("merged-real-fs.yaml", realFSdoc)
 
 	if bytes.Compare(realFSdoc, embedFSdoc) != 0 {
 		panic("mismatch")

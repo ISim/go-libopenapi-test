@@ -61,3 +61,19 @@ paths:
                                         errorCode: ErrOperationForbidden
                                         requestId: "x837ant-000007"
                                         message: Forbidden
+    /test2:
+        get:
+            operationId: GetTest2
+            responses:
+                "200":
+                    description: Test
+                    content:
+                        application/json:
+                            schema:
+                                description: Paging section
+                                type: object
+                                properties:
+                                    total:
+                                        description: Total count
+                                        type: integer
+                                        example: 439
